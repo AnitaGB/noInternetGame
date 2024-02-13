@@ -20,6 +20,16 @@ export class Game extends drawing {
   }
 
   controls() {
+    //for mobile
+    document.addEventListener("touchstart", () => {
+      if (this.on === false) {
+        this.start();
+        this.dino.stop();
+      } else if (this.dino.jumping === false) {
+        this.dino.jump();
+      }
+    });
+    //for desktop
     document.addEventListener("keydown", (e) => {
       const charCode = e.code;
 
