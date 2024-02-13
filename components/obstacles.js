@@ -22,7 +22,7 @@ export class Obstacles {
           ? new Pterodactyl(this.canva, random > 0.8, this.dino)
           : new Cactus(this.canva, this.dino);
       this.all.push(obj);
-    }, 1000);
+    }, 1200);
   }
 
   stopAll() {

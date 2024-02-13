@@ -12,9 +12,9 @@ export class Game extends drawing {
 
   constructor() {
     super({ height: 250, width: 1000 }, undefined, new Canvas().canvasElement);
+
     this.dino = new Dinosaur(this.canva);
     this.obstacles = new Obstacles(this.canva, this.dino);
-
     this.controls();
     this.dino.stop();
   }
@@ -27,7 +27,7 @@ export class Game extends drawing {
         case "Space":
           if (this.on === false) {
             this.start();
-            this.dino.jump();
+            this.dino.stop();
           } else if (this.dino.jumping === false) {
             this.dino.jump();
           }
@@ -52,6 +52,7 @@ export class Game extends drawing {
     this.obstacles.destroy();
     this.cleanImage();
     console.log("Start!");
+
     window.requestAnimationFrame(this.loop.bind(this));
     this.obstacles.randomGenerate();
   }
@@ -64,6 +65,7 @@ export class Game extends drawing {
       this.obstacles.stopAll();
       this.on = false;
       window.cancelAnimationFrame(this.loop.bind(this));
+      this.dino.jumping = false;
       console.log("Cancelar!");
     } else {
       window.requestAnimationFrame(this.loop.bind(this));

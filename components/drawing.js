@@ -39,9 +39,6 @@ export class drawing {
   }
 
   cleanImage() {
-    console.log("Previous position X Current");
-    console.log(this.previousPosition);
-    console.log(this.position);
     this.context.clearRect(
       this.previousPosition.x,
       this.previousPosition.y,
