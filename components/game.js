@@ -46,6 +46,8 @@ export class Game extends drawing {
   }
 
   start() {
+    this.score = null;
+    this.startTime = null;
     this.on = true;
     this.obstacles.destroy();
     this.cleanImage();
