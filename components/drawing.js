@@ -47,6 +47,24 @@ export class drawing {
     );
   }
 
+  cleanLine() {
+    this.context.clearRect(
+      this.position.x,
+      this.position.y - 1,
+      this.dimensions.width,
+      this.dimensions.height + 2
+    );
+  }
+
+  drawStraightLine() {
+    this.cleanLine();
+    this.context.beginPath();
+    this.context.moveTo(this.position.x, this.position.y);
+    this.context.lineTo(this.dimensions.width, this.position.y);
+
+    this.context.stroke();
+  }
+
   writeText(text, location = { x: 250, y: 20 }) {
     this.context.fillStyle = "black";
 

@@ -9,6 +9,7 @@ export class Game extends drawing {
   on = false;
   dino;
   obstacles;
+  floor;
 
   constructor() {
     super({ height: 250, width: 1000 }, undefined, new Canvas().canvasElement);
@@ -17,6 +18,7 @@ export class Game extends drawing {
     this.obstacles = new Obstacles(this.canva, this.dino);
     this.controls();
     this.dino.stop();
+    this.floor = new Floor(this.canva);
   }
 
   controls() {
@@ -61,6 +63,7 @@ export class Game extends drawing {
     this.on = true;
     this.obstacles.destroy();
     this.cleanImage();
+    this.floor.drawStraightLine();
     console.log("Start!");
 
     window.requestAnimationFrame(this.loop.bind(this));
@@ -68,6 +71,7 @@ export class Game extends drawing {
   }
 
   loop(timeStamp) {
+    this.floor.drawStraightLine();
     this.startTime = this.startTime === null ? timeStamp : this.startTime;
     this.score = Math.round((timeStamp - this.startTime) / 100);
     this.writeText(this.score);
@@ -80,5 +84,12 @@ export class Game extends drawing {
     } else {
       window.requestAnimationFrame(this.loop.bind(this));
     }
+  }
+}
+
+class Floor extends drawing {
+  constructor(canva) {
+    super({ height: 1, width: 1000 }, { x: 0, y: 107 }, canva);
+    this.drawStraightLine();
   }
 }
