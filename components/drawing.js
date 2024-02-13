@@ -19,7 +19,6 @@ export class drawing {
 
   draw(image) {
     this.cleanImage();
-    this.previousPosition = this.position;
     this.context.drawImage(
       image,
       this.position.x,
@@ -36,9 +35,13 @@ export class drawing {
         image.height
       );
     };
+    this.previousPosition = { x: this.position.x, y: this.position.y };
   }
 
   cleanImage() {
+    console.log("Previous position X Current");
+    console.log(this.previousPosition);
+    console.log(this.position);
     this.context.clearRect(
       this.previousPosition.x,
       this.previousPosition.y,
