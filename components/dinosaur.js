@@ -7,7 +7,7 @@ export class Dinosaur extends drawing {
   constructor(canvas) {
     super({ height: 40, width: 25 }, { x: 10, y: 70 }, canvas);
     this.dino = new Image(this.dimensions.width, this.dimensions.height);
-    this.dino.src = "./../images/dino.png";
+    this.dino.src = "../images/dino.png";
   }
 
   jump() {
